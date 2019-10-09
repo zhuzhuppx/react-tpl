@@ -14,7 +14,6 @@ class MyMenu extends React.Component {
         defaultOpenKeys={["sub1"]}
         mode="inline"
         theme="dark"
-        inlineCollapsed={this.props.collapsed}
         className="app-menu"
         style={style}
       >

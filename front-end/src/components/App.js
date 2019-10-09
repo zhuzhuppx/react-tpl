@@ -1,9 +1,9 @@
+import { Layout, Icon } from "antd";
 import React from "react";
-import { ppx } from "@/api/api";
 import Menu from "./layout/Menu";
-import MyHeader from "./layout/Header";
 import MainContent from "./layout/MainContent";
-import { Layout } from "antd";
+import Message from "./layout/Message";
+import Avatar from "./layout/Avatar";
 const { Header, Sider, Content } = Layout;
 
 class App extends React.Component {
@@ -14,51 +14,56 @@ class App extends React.Component {
       height: 0
     };
   }
+
+  toggle = () => {
+    this.setState({
+      collapsed: !this.state.collapsed
+    });
+  };
   componentDidMount() {
     let h =
       window.innerHeight ||
       document.documentElement.clientHeight ||
       document.body.clientHeight - 54;
     this.setState({ height: h });
-    ppx({}).then(data => {
-      console.log(data);
-    });
   }
-  toggleCollapsed = () => {
-    this.setState({
-      collapsed: !this.state.collapsed
-    });
-  };
   render() {
     let height = this.state.height;
+
     return (
-      <div className="App">
-        {" "}
+      <Layout>
+        <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
+          <Menu></Menu>
+        </Sider>
         <Layout>
-          <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-            <Menu collapsed={this.state.collapsed} height={height}></Menu>
-          </Sider>
-          <div className="h-m-content">
-            <Layout>
-              <MyHeader
-                toggleCollapsed={this.toggleCollapsed}
-                collapsed={this.state.collapsed}
-                height={height}
-              ></MyHeader>
-              <Content
-                style={{
-                  margin: "24px 16px",
-                  padding: 24,
-                  background: "#fff",
-                  minHeight: 280
-                }}
-              >
-                <MainContent height={height}></MainContent>{" "}
-              </Content>
-            </Layout>
-          </div>
+          <Header style={{ background: "#fff", padding: 0 }}>
+            <Icon
+              className="trigger"
+              style={{ paddingLeft: 16 }}
+              type={this.state.collapsed ? "menu-unfold" : "menu-fold"}
+              onClick={this.toggle}
+            />
+            <span style={{ float: "right", marginRight: 16 }}>
+              <span style={{ marginRight: 16 }}>
+                <Message></Message>
+              </span>
+              <span>
+                <Avatar></Avatar>
+              </span>
+            </span>
+          </Header>
+          <Content
+            style={{
+              margin: "24px 16px",
+              padding: 24,
+              background: "#fff",
+              minHeight: height
+            }}
+          >
+            <MainContent></MainContent>
+          </Content>
         </Layout>
-      </div>
+      </Layout>
     );
   }
 }
