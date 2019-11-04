@@ -1,7 +1,7 @@
 import React from "react";
 import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
-import menuItems from "./menuItems";
+import { getMenuItems } from "@/api/api";
 const { SubMenu } = Menu;
 const renderMenuItem = (item, key) => {
   if (item.hasChildren) {
@@ -16,7 +16,7 @@ const renderMenuItem = (item, key) => {
         }
       >
         {item.children.map((subItem, indexSub) => {
-            return renderMenuItem(subItem,key+indexSub)
+          return renderMenuItem(subItem, key + indexSub);
         })}
       </SubMenu>
     );
@@ -31,11 +31,26 @@ const renderMenuItem = (item, key) => {
   );
 };
 class MyMenu extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      menuItems: []
+    };
+  }
+  componentDidMount() {
+    const fetchMenus = async () => {
+      let data = await getMenuItems();
+      data = data.data.data;
+      this.setState({ menuItems: data });
+    };
+    fetchMenus();
+  }
   render() {
     let height = this.props.height;
     const style = {
       height: `${height}px`
     };
+    const menuItems = this.state.menuItems;
     return (
       <Menu
         defaultSelectedKeys={["1"]}
@@ -47,7 +62,7 @@ class MyMenu extends React.Component {
       >
         {menuItems.map((item, index) => {
           return renderMenuItem(item, index);
-        })}      
+        })}
       </Menu>
     );
   }
