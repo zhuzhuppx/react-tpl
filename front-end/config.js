@@ -3,7 +3,7 @@ const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 
 module.exports = {
   publicPath: "./",
-  appBuild: `/Users/siyuan.zhu/Documents/zhuzhu-work/react-tpl/react-tpl/front-end/dist`,
+  appBuild: `/Users/siyuan.zhu/Documents/zhuzhu-work/react-tpl/react-tpl/front-end/build`,
   plugins: [
     new ProgressBarPlugin({
       complete: "█",
