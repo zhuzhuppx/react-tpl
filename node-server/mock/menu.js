@@ -1,9 +1,9 @@
 module.exports=[
-    { name: `首页`, path: `/`, icon: "", hasChildren: false },
+    { name: `首页`, path: `/`, icon: "dashboard", hasChildren: false },
     {
-      name: `PPX`,
+      name: `统计`,
       path: `/ppx`,
-      icon: "",
+      icon: "line-chart",
       hasChildren: true,
       children: [{ name: `001`, path: `/ppx/01`, icon: "", hasChildren: false }]
     }

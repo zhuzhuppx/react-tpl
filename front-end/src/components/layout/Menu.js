@@ -3,6 +3,11 @@ import { Menu, Icon } from "antd";
 import { Link } from "react-router-dom";
 import { getMenuItems } from "@/api/api";
 const { SubMenu } = Menu;
+/**
+ * 渲染单个菜单
+ * @param {参数：在router中配置的元素} item 
+ * @param {索引} key 
+ */
 const renderMenuItem = (item, key) => {
   if (item.hasChildren) {
     return (
@@ -30,7 +35,10 @@ const renderMenuItem = (item, key) => {
     </Menu.Item>
   );
 };
-class MyMenu extends React.Component {
+/**
+ * 菜单类
+ */
+class SideMenu extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -53,8 +61,8 @@ class MyMenu extends React.Component {
     const menuItems = this.state.menuItems;
     return (
       <Menu
-        defaultSelectedKeys={["1"]}
-        defaultOpenKeys={["sub1"]}
+        defaultSelectedKeys={[`0`]}
+        defaultOpenKeys={["0"]}
         mode="inline"
         theme="dark"
         className="app-menu"
@@ -67,4 +75,4 @@ class MyMenu extends React.Component {
     );
   }
 }
-export default MyMenu;
+export default SideMenu;
