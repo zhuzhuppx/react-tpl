@@ -9,7 +9,6 @@ export default {
   mainPage: {
     path: "/main",
     exact: true,
-    component: loadable(() => import(`@/components/layout/index.js`)),
     routes: [
       {
         path: "/main/ppx",

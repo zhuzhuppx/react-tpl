@@ -1,15 +1,18 @@
 import React from "react";
-
+import { Switch, Route } from "react-router-dom";
 import { Layout, Icon } from "antd";
 import Menu from "./Menu";
-import MainContent from "./MainContent";
 import Message from "./Message";
 import Avatar from "./Avatar";
+import { RouteWithSubRoutes } from "@/routes/helper.js";
+
 const { Header, Sider, Content } = Layout;
 
 class PageLayout extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.routes);
+
     this.state = {
       collapsed: false,
       height: 0
@@ -30,6 +33,7 @@ class PageLayout extends React.Component {
   }
   render() {
     let height = this.state.height;
+    const routes = this.props.routes;
     return (
       <Layout className="App">
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
@@ -60,7 +64,13 @@ class PageLayout extends React.Component {
               minHeight: height
             }}
           >
-            <MainContent routes={this.props.routes}></MainContent>
+            <div className="main">
+              <Switch>
+                {routes.map((route, index) => (
+                  <RouteWithSubRoutes key={index} {...route} />
+                ))}
+              </Switch>
+            </div>
           </Content>
         </Layout>
       </Layout>

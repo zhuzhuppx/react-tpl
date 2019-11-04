@@ -5,6 +5,8 @@ import PageLayout from "./layout/index";
 class App extends React.Component {
   render() {
     const { loginPage, mainPage } = router;
+    console.log(mainPage);
+    
     return (
       <Router>
         <Switch>
