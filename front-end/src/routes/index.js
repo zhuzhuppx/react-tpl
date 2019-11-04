@@ -1,19 +1,26 @@
 import loadable from "@loadable/component";
 
-export default [
-  {
+export default {
+  loginPage: {
     path: "/",
     exact: true,
-    component: loadable(() => import(`@/pages/index/index.js`))
+    component: loadable(() => import(`@/pages/login/index.js`))
   },
-  {
-    path: "/ppx",
+  mainPage: {
+    path: "/main",
     exact: true,
-    component: loadable(() => import(`@/pages/ppx/index.js`))
-  },
-  {
-    path: "/ppx/01",
-    exact: true,
-    component: loadable(() => import(`@/pages/ppx/01/index.js`))
+    component: loadable(() => import(`@/components/layout/index.js`)),
+    routes: [
+      {
+        path: "/main/ppx",
+        exact: true,
+        component: loadable(() => import(`@/pages/ppx/index.js`))
+      },
+      {
+        path: "/main/ppx/01",
+        exact: true,
+        component: loadable(() => import(`@/pages/ppx/01/index.js`))
+      }
+    ]
   }
-];
+};

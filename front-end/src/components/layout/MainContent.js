@@ -1,9 +1,11 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import routes from "@/routes/index.js";
 import {RouteWithSubRoutes} from "@/routes/helper.js"
 class MainContent extends React.Component {
   render() {
+      const routes = this.props.routes;
+      console.log(routes);
+      
     return (
       <div className="main">
         <Switch>
