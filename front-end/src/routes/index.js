@@ -2,13 +2,10 @@ import loadable from "@loadable/component";
 
 export default {
   loginPage: {
-    path: "/",
-    exact: true,
-    component: loadable(() => import(`@/pages/login/index.js`))
+    path: "/"
   },
   mainPage: {
     path: "/main",
-    exact: true,
     routes: [
       {
         path: "/main/ppx",

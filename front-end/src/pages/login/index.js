@@ -1,21 +1,32 @@
 import React from "react";
 import "./index.less";
 import { Form, Icon, Input, Button, Checkbox } from "antd";
-
+import bgImg from "@/assets/timg.jpeg";
 class LoginPage extends React.Component {
-  handleSubmit = e => {
+  componentDidMount() {
+    document.body.style.overflow = "hidden";
+  }
+  componentWillUnmount() {
+    document.body.style.overflow = "auto";
+  }
+  handleSubmit = e => {      
+    const history = this.props.history;
+   
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
         console.log("Received values of form: ", values);
+        history.push("/main");
       }
     });
   };
   render() {
     const { getFieldDecorator } = this.props.form;
-
     return (
       <div className="login-page">
+        <div className="bg-img">
+          <img src={bgImg}></img>
+        </div>
         <Form onSubmit={this.handleSubmit} className="login-form">
           <Form.Item>
             {getFieldDecorator("username", {

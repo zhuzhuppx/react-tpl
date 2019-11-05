@@ -11,8 +11,6 @@ const { Header, Sider, Content } = Layout;
 class PageLayout extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props.routes);
-
     this.state = {
       collapsed: false,
       height: 0
@@ -33,7 +31,7 @@ class PageLayout extends React.Component {
   }
   render() {
     let height = this.state.height;
-    const routes = this.props.routes;
+    const routes = this.props.routes||[];    
     return (
       <Layout className="App">
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
