@@ -1,9 +1,9 @@
 const proxy = require("http-proxy-middleware");
 // proxy 中间件的选择项
 
-let serverUrl = require('../proxyUrl');
+let {proxyUrl} = require('../config');
 var options = {
-	target: serverUrl,
+	target: proxyUrl,
 	changeOrigin: true,
 	pathRewrite: {
 		"^/api": "/"
