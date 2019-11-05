@@ -9,7 +9,7 @@ const {
 const ProgressBarPlugin = require("progress-bar-webpack-plugin");
 const chalk = require("chalk");
 const path = require("path");
-const { appBuild, publicPath } = require("./config");
+const { appBuild, publicPath } = require("./config/index");
 
 function resolve(dir) {
   return path.join(__dirname, ".", dir);
