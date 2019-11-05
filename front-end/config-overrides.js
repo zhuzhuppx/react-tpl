@@ -2,15 +2,17 @@ const {
   override,
   fixBabelImports,
   addLessLoader,
-  addWebpackAlias, addWebpackPlugin, setWebpackPublicPath, adjustWorkbox
+  addWebpackAlias,
+  addWebpackPlugin,
+  setWebpackPublicPath
 } = require("customize-cra");
-const ProgressBarPlugin = require('progress-bar-webpack-plugin');
-const chalk = require('chalk');
-const path = require('path');
-const { appBuild, publicPath, plugins } = require("./config");
+const ProgressBarPlugin = require("progress-bar-webpack-plugin");
+const chalk = require("chalk");
+const path = require("path");
+const { appBuild, publicPath } = require("./config");
 
 function resolve(dir) {
-  return path.join(__dirname, '.', dir)
+  return path.join(__dirname, ".", dir);
 }
 
 module.exports = {
@@ -27,15 +29,19 @@ module.exports = {
     addWebpackAlias({
       "@": resolve("src")
     }),
-    addWebpackPlugin(new ProgressBarPlugin({
-      complete: "█",
-      format: `${chalk.green('Building')} [ ${chalk.green(':bar')} ] ':msg:' ${chalk.bold('(:percent)')}`,
-      clear: true
-    })
-    ), setWebpackPublicPath(publicPath)),
-  paths: (paths) => {
+    addWebpackPlugin(
+      new ProgressBarPlugin({
+        complete: "█",
+        format: `${chalk.green("Building")} [ ${chalk.green(
+          ":bar"
+        )} ] ':msg:' ${chalk.bold("(:percent)")}`,
+        clear: true
+      })
+    ),
+    setWebpackPublicPath(publicPath)
+  ),
+  paths: paths => {
     paths.appBuild = appBuild;
-
     return paths;
   }
-}
+};
