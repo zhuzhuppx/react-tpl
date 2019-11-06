@@ -6,8 +6,8 @@ import "./index.less";
 const columns = [
   {
     title: "姓名",
-    dataIndex: "name",
-    key: "name"
+    dataIndex: "userName",
+    key: "userName"
   },
   {
     title: "年龄",
