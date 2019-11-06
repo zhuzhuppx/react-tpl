@@ -4,6 +4,7 @@ import router from "@/routes/index.js";
 import PageLayout from "./layout/index";
 import LoginPage from "@/pages/login/index.js";
 import { createBrowserHistory } from "history";
+import 'reset-css';
 
 const history = createBrowserHistory();
 class App extends React.Component {
