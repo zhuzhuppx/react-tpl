@@ -1,2 +1,3 @@
 import samples from "./samples";
-export default [...samples];
+import projectFuncs from './projectFuncs'
+export default [...samples,...projectFuncs];

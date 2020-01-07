@@ -1,0 +1,33 @@
+//     // "#57C8F2", "#F8D347", "#8DCD46", "#41CABF", '#E87C25', '#C6E579', '#F0805A', "#9ED05F", "#FEB400", '#F3A43B', '#D7504B', '#F4E001'
+.project-func-page {
+  color: #333;
+  .func-list {
+    .func-list-item {
+      margin: 16px 0;
+      .func-card {
+        .title {
+          &::before {
+            content: " ";
+            height: 12px;
+            width: 2px;
+            background: #1890ff;
+            display: inline-block;
+            margin-right: 4px;
+          }
+        }
+        .content {
+          padding: 16px 16px;
+        }
+      }
+    }
+  }
+  .clearFix {
+    clear: both;
+  }
+  .navtor {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    padding:16px 0;
+  }
+}
