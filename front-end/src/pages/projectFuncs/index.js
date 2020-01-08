@@ -9,57 +9,55 @@ import Logistic from "./logistic";
 import Nps from "./nps";
 import Finance from "./finance";
 import PDInvoice from "./pdinvoice";
-// import Loadable from 'react-loadable';
-import loadable from "@loadable/component";
+
 
 const { Link } = Anchor;
 const modules = [
   {
     title: "项目概述",
-    component: './project',
+    component: ProjectInfo,
     id: "ProjectInfo"
   },
   {
     title: "场地预定",
-    component: './schedule',
+    component: Schedule,
     id: "Schedule"
   },
   {
     title: "面试官预定",
-    component: './interviewer',
+    component: Interviewer,
     id: "Interviewer"
   },
   {
     title: "宣传反馈",
-    component: './feedback',
+    component: Feedback,
     id: "Feedback"
   },
   {
     title: "物流查询",
-    component: './logistic',
+    component: Logistic,
     id: ""
   },
   {
     title: "满意度/NPS",
-    component: './nps',
+    component: Nps,
     id: "Nps"
   },
   {
     title: "财务管理",
-    component: './finance',
+    component: Finance,
     id: "Finance"
   },
   {
     title: "PD报销费用",
-    component: './pdinvoice',
+    component: PDInvoice,
     id: "PDInvoice"
   }
 ];
-const ErrorDisplay = ({ error }) => <div>Oups! {error.message}</div>
 
-const LoadableComponent = path=> loadable(() => import(path), {
-    ErrorComponent: ErrorDisplay,
-  })
+const LoadComponent = MyCom=> {
+    return <MyCom></MyCom>
+}
 class ProjectFunc extends React.Component {
   constructor(props) {
     super(props);
@@ -77,85 +75,18 @@ class ProjectFunc extends React.Component {
       <div className="project-func-page">
         <div className="func-list">
           {modules.map(m => (
-            <div id={m.id} className="func-list-item">
+            <div key={m.id} id={m.id} className="func-list-item">
               <div className="func-card">
                 <div className="title">
                   <span>{m.title}</span>
                 </div>
                 <div className="content">
-                  {/* <ProjectInfo></ProjectInfo> */}
-                  <LoadableComponent path={m.component}></LoadableComponent>
+                 {LoadComponent(m.component)}
                 </div>
               </div>
             </div>
           ))}
-          <div id="ProjectInfo" className="func-list-item">
-            <div className="func-card">
-              <div className="title">
-                <span>项目概述</span>
-              </div>
-              <div className="content">
-                <ProjectInfo></ProjectInfo>
-              </div>
-            </div>
-          </div>
-          <div id="Schedule" className="func-list-item">
-            <div className="func-card">
-              <div className="title">场地预定</div>
-              <div className="content">
-                <Schedule></Schedule>
-              </div>
-            </div>
-          </div>
-          <div id="Interviewer" className="func-list-item">
-            <div className="func-card">
-              <div className="title">面试官预定</div>
-              <div className="content">
-                <Interviewer></Interviewer>
-              </div>
-            </div>
-          </div>
-          <div id="Feedback" className="func-list-item">
-            <div className="func-card">
-              <div className="title">宣传反馈</div>
-              <div className="content">
-                <Feedback></Feedback>
-              </div>
-            </div>
-          </div>
-          <div id="Logistic" className="func-list-item">
-            <div className="func-card">
-              <div className="title">物流查询</div>
-              <div className="content">
-                <Logistic></Logistic>
-              </div>
-            </div>
-          </div>
-          <div id="Nps" className="func-list-item">
-            <div className="func-card">
-              <div className="title">满意度/NPS</div>
-              <div className="content">
-                <Nps></Nps>
-              </div>
-            </div>
-          </div>
-          <div id="Finance" className="func-list-item">
-            <div className="func-card">
-              <div className="title">财务管理</div>
-              <div className="content">
-                <Finance></Finance>
-              </div>
-            </div>
-          </div>
-          <div id="PDInvoice" className="func-list-item">
-            <div className="func-card">
-              <div className="title">PD报销费用</div>
-              <div className="content">
-                <PDInvoice></PDInvoice>
-              </div>
-            </div>
-          </div>
-        </div>
+         </div>
         <div className="navtor">
           <Anchor targetOffset={this.state.targetOffset}>
             <Link href="#ProjectInfo" title="项目概述" />

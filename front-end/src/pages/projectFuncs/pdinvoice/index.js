@@ -247,7 +247,7 @@ class PDInvoice extends React.Component {
   render() {
     return (
       <div>
-        <Table dataSource={dataSource} columns={columns} pagination={false}/>
+        <Table rowKey="id" dataSource={dataSource} columns={columns} pagination={false}/>
 
       </div>
     );
